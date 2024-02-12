@@ -38,3 +38,20 @@ body{
 main{
     background-color: white;
 }
+h1{
+}
+#logo{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+#upozorenje{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    height: 30%;
+}
+#tekstu{
+    text-align: center;
+}
