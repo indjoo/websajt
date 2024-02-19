@@ -1,6 +1,6 @@
 *{
-    padding: 0px;
     margin: 0px;
+    padding: 0px;
 }
 nav{
     width: 100%;
@@ -11,11 +11,11 @@ ul{
     text-align: center;
 }
 li{
-    float: left;
+    float:left
 }
 ul li a{
     display: block;
-    text-decoration:none;
+    text-decoration: none;
     color: black;
 }
 a:hover{
@@ -37,21 +37,30 @@ body{
 }
 main{
     background-color: white;
-}
-h1{
+    padding: 15px;
 }
 #logo{
     width: 100px;
     height: 100px;
-    float: left;
+    float:left;
 }
 #upozorenje{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
-    height: 30%;
+    width: 25%;
+    height: 25%;
 }
 #tekstu{
     text-align: center;
+}
+p{
+    text-align: justify;
+    font-size: 18px;
+}
+figure{
+    margin: 40px 0;
+}
+h2{
+    margin: 30px  0 15px 0;
 }
