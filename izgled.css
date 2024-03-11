@@ -54,21 +54,19 @@
   #prvoslovo::first-letter{
     font-size: 40px;
   }
-  #njuh{
-    width: 50%;
-    height: 50%;
-    display: block;
-    float: left;
-    padding-left: 150px;
-  }
-  #njuh1{
-    width: 50%;
-    height: 50%;
-    display: block;
-    float: right;
-    padding-right: 150px;
-  }
-  #pics{
+.pics img{
     width: 25%;
     height: 25%;
+    margin: 15px 100px;
+  }
+  .pics{
+    text-align: center;
+  }
+  .pics1 img{
+    width: 25%;
+    height: 25%;
+    margin: 15px 100px;
+  }
+  .pics1{
+    text-align: center;
   }
