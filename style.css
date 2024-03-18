@@ -64,3 +64,46 @@ figure{
 h2{
     margin: 30px  0 15px 0;
 }
+#prvoslovo::first-letter{
+    font-size: 40px;
+  }
+.pics img{
+    width: 25%;
+    height: 25%;
+    margin: 15px 100px;
+  }
+  .pics{
+    text-align: center;
+  }
+  .pics1 img{
+    width: 25%;
+    height: 25%;
+    margin: 15px 100px;
+  }
+  .pics1{
+    text-align: center;
+  }
+  .rase figure a img
+  {
+    width:100%;
+    border: 1px solid green;
+  }
+  .rase a:hover img{
+    border: 1px blue solid;
+  }
+   .rase figcaption{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  ul li ul{
+    display: none;
+    position: absolute;
+    background-color: grey;
+  }
+  ul li{
+    position:relative;
+  }
+  ul li:hover ul{
+    display:block;
+  }
