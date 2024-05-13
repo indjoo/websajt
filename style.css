@@ -126,3 +126,16 @@ h2{
   input[type=text]{
     width: 282px;
   }
+  .pojedinacn img{
+    width:400px;
+    margin:10px auto;
+    display: block;
+  }
+  .forme{
+    width:300px;
+    margin:10px auto;
+  }
+  fieldset{
+    padding:5px;
+    
+  }
