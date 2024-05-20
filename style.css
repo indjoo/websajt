@@ -139,3 +139,34 @@ h2{
     padding:5px;
     
   }
+  input[type=email]{
+
+    width: 282px;
+  }
+  .animacije{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    transition-property: width;
+    transition-duration: 5s;
+    transition-timing-function:ease-in ;
+    transition-delay:2s ;
+    
+  }
+  .animacije:hover{
+    width: 200px;
+    height: 200px;
+  }
+  footer{
+    text-align: center;
+    margin: 60px;
+  }
+  footer a img{
+    width: 40px;
+    height: 40px;
+    transition: width 0.5s linear, height 0.5s linear;
+  }
+  footer a img:hover{
+    width: 60px;
+    height: 60px;
+  }
