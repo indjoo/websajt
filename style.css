@@ -5,6 +5,8 @@
 nav{
     width: 100%;
     background-color: gray;
+    position: sticky;
+    top:0;
 }
 ul{
     list-style-type:none;
@@ -20,6 +22,7 @@ ul li a{
 }
 a:hover{
     background-color: gainsboro;
+    transition:background-color 1s ease-in
 }
 .wrapper{
     width: 1000px;
@@ -34,6 +37,7 @@ a{
 }
 body{
     background-color: teal;
+    padding-top: 100px;
 }
 main{
     background-color: white;
@@ -169,4 +173,9 @@ h2{
   footer a img:hover{
     width: 60px;
     height: 60px;
+  }
+  .dugme
+  {
+    margin-top: 15px;
+    padding: 5px;
   }
