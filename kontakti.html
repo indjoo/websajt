@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="style1.css">
+    </head>
+    <body>
+        <nav>
+            <div class="wrapper">
+                <ul>
+                    <li><a href="#">POCETNA</a></li>
+                    <li><a href="#">IZGLED</a></li>
+                    <li><a href="#">RASE</a></li>
+                    <li><a href="kontakt.html">KONTAKT</a></li>
+                </ul>   
+            </div>
+        </nav>
+    <div class="wrapper">
+        <main>
+            <section>
+                <h1>UNOS</h1>
+                <p>Ovde mozete uneti podatke o vasem psu</p>
+            </section>
+            <br>
+            <section class="forme">
+                <form>
+                    <fieldset>
+                        <legend>Unesite personalne informacije</legend>
+                        <label for="fime">Ime : </label><br>
+                        <input type="text" id="fime" name="fime" placeholder="Unesite ime"><br>
+                        <label for="fprezime">Prezime : </label><br>
+                        <input type="text" id="fprezime" name="fprezime" placeholder="Unesite prezime"><br>
+                    </fieldset>
+                    <br>
+                    <fieldset>
+                        <legend>Unesite detalje rase</legend>
+                        <input type="radio" id="muzjak" name="pol">
+                        <label for="muzjak">Muzjak</label><br>
+                        <input type="radio" id="zenka" name="pol">
+                        <label for="zenka">Zenka</label><br>
+                        <br>
+                        <input type="checkbox" id="sar" name="rasa1">
+                        <label for="sar">Sarplaninac</label><br>
+                        <input type="checkbox" id="jaz" name="rasa2">
+                        <label for="jaz">Jazavicar</label><br>
+                        <input type="checkbox" id="siba" name="rasa3">
+                        <label for="siba">Siba inu</label><br><br>
+                        <label for="rase">Biraj rasu</label>
+                        <select id="rase" name="rase">
+                            <option>Siba inu</option>
+                            <option>Jazavicar</option>
+                            <option>Sarplaninac</option>
+                        </select><br><br>
+                        <label for="email">Unesite vas email</label><br>
+                        <input type="email" name="email">
+                    </fieldset>
+                    <br>
+                    <textarea name="poruka" placeholder="Unesite dodatne informacije za rasu"></textarea>
+                    <br>
+                    <input type="submit" class="dugme">
+                    <br>
+
+                    <input type="reset" class="dugme">
+                </form>
+            
+            </section>
+            <footer>
+                <a href="https://www.facebook.com/"><img src="Facebook.png"></a>
+            </footer>
+            </main>
+    </div>
+    </body>
+</html>
