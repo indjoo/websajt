@@ -1,0 +1,187 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_GOSTIJU 500
+#define MAX_DUZINA 30
+
+typedef struct {
+    int sifra;
+    char ime[MAX_DUZINA];
+    char prezime[MAX_DUZINA];
+    int broj_clanova;
+    int obrok;
+    int brojSobe;
+} HOTEL;
+
+void ucitajGoste(HOTEL gosti[],int *broj_gostiju) {
+    FILE *file=fopen("Hotel.txt","r");
+    if(file==NULL) {
+        printf("Greska pri otvaranju datoteke.\n");
+        exit(1);
+    }
+    *broj_gostiju=0;
+    while(fscanf(file,"%d %s %s %d %d %d",&gosti[*broj_gostiju].sifra,gosti[*broj_gostiju].ime,
+                 gosti[*broj_gostiju].prezime,&gosti[*broj_gostiju].broj_clanova,
+                 &gosti[*broj_gostiju].obrok,&gosti[*broj_gostiju].brojSobe)!=EOF) {
+        (*broj_gostiju)++;
+    }
+    fclose(file);
+}
+
+void sacuvajGoste(HOTEL gosti[],int broj_gostiju) {
+    FILE *file=fopen("Hotel.txt","w");
+    if(file==NULL) {
+        printf("Greska pri otvaranju datoteke.\n");
+        exit(1);
+    }
+    for(int i=0;i<broj_gostiju;i++) {
+        fprintf(file,"%d %s %s %d %d %d\n",gosti[i].sifra,gosti[i].ime,gosti[i].prezime,
+                gosti[i].broj_clanova,gosti[i].obrok,gosti[i].brojSobe);
+    }
+    fclose(file);
+}
+
+int pronadjiGosta(HOTEL gosti[],int broj_gostiju,int sifra) {
+    for(int i=0;i<broj_gostiju;i++) {
+        if(gosti[i].sifra==sifra) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void dodajGosta(HOTEL gosti[],int *broj_gostiju) {
+    if(*broj_gostiju>=MAX_GOSTIJU) {
+        printf("Ne moze se dodati vise gostiju.\n");
+        return;
+    }
+    HOTEL novi_gost;
+    printf("Unesite sifru gosta: ");
+    scanf("%d",&novi_gost.sifra);
+    if(pronadjiGosta(gosti,*broj_gostiju,novi_gost.sifra)!=-1) {
+        printf("Gost sa tom sifrom vec postoji.\n");
+        return;
+    }
+    printf("Unesite ime: ");
+    scanf("%s",novi_gost.ime);
+    printf("Unesite prezime: ");
+    scanf("%s",novi_gost.prezime);
+    printf("Unesite broj clanova: ");
+    scanf("%d",&novi_gost.broj_clanova);
+    printf("Unesite broj obroka (1,2,3): ");
+    scanf("%d",&novi_gost.obrok);
+    printf("Unesite broj sobe: ");
+    scanf("%d",&novi_gost.brojSobe);
+
+    gosti[*broj_gostiju]=novi_gost;
+    (*broj_gostiju)++;
+    sacuvajGoste(gosti,*broj_gostiju);
+}
+
+int porediGoste(const void *a,const void *b) {
+    return ((HOTEL*)b)->broj_clanova-((HOTEL*)a)->broj_clanova;
+}
+
+void ispisGostijuPoObroku(HOTEL gosti[],int broj_gostiju) {
+    int obrok;
+    printf("Unesite broj obroka (1,2,3): ");
+    scanf("%d",&obrok);
+
+    HOTEL gosti_po_obroku[MAX_GOSTIJU];
+    int broj_gostiju_po_obroku=0;
+
+    for(int i=0;i<broj_gostiju;i++) {
+        if(gosti[i].obrok==obrok) {
+            gosti_po_obroku[broj_gostiju_po_obroku++]=gosti[i];
+        }
+    }
+
+    qsort(gosti_po_obroku,broj_gostiju_po_obroku,sizeof(HOTEL),porediGoste);
+
+    char ime_datoteke[100];
+    sprintf(ime_datoteke,"OBROK_%d_STATISTIKA.txt",obrok);
+    FILE *file=fopen(ime_datoteke,"w");
+    if(file==NULL) {
+        printf("Greska pri otvaranju datoteke.\n");
+        return;
+    }
+
+    for(int i=0;i<broj_gostiju_po_obroku;i++) {
+        fprintf(file,"%d %s %s %d %d %d\n",gosti_po_obroku[i].sifra,gosti_po_obroku[i].ime,
+                gosti_po_obroku[i].prezime,gosti_po_obroku[i].broj_clanova,
+                gosti_po_obroku[i].obrok,gosti_po_obroku[i].brojSobe);
+    }
+    fclose(file);
+
+    printf("Podaci su zapisani u datoteku %s\n",ime_datoteke);
+}
+
+void ispisUkupnogBrojaGostiju(HOTEL gosti[],int broj_gostiju) {
+    printf("Ukupan broj gostiju: %d\n",broj_gostiju);
+}
+
+void promeniBrojObroka(HOTEL gosti[],int broj_gostiju) {
+    int sifra;
+    printf("Unesite sifru gosta: ");
+    scanf("%d",&sifra);
+
+    int indeks=pronadjiGosta(gosti,broj_gostiju,sifra);
+    if(indeks==-1) {
+        printf("Gost sa sifrom %d nije pronadjen.\n",sifra);
+        return;
+    }
+
+    int novi_broj_obroka;
+    printf("Unesite novi broj obroka (1,2,3): ");
+    scanf("%d",&novi_broj_obroka);
+
+    gosti[indeks].obrok=novi_broj_obroka;
+    sacuvajGoste(gosti,broj_gostiju);
+    printf("Broj obroka je promenjen.\n");
+}
+
+void prikaziMeni() {
+    printf("Meni:\n");
+    printf("1. Dodavanje novog gosta\n");
+    printf("2. Ispis svih gostiju po zadatom broju obroka\n");
+    printf("3. Ispis ukupnog broja gostiju\n");
+    printf("4. Promena broja obroka za izabranog gosta\n");
+    printf("5. Izlaz\n");
+}
+
+int main() {
+    HOTEL gosti[MAX_GOSTIJU];
+    int broj_gostiju=0;
+
+    ucitajGoste(gosti,&broj_gostiju);
+
+    int izbor;
+    do {
+        prikaziMeni();
+        printf("Izaberite opciju: ");
+        scanf("%d",&izbor);
+
+        switch(izbor) {
+            case 1:
+                dodajGosta(gosti,&broj_gostiju);
+                break;
+            case 2:
+                ispisGostijuPoObroku(gosti,broj_gostiju);
+                break;
+            case 3:
+                ispisUkupnogBrojaGostiju(gosti,broj_gostiju);
+                break;
+            case 4:
+                promeniBrojObroka(gosti,broj_gostiju);
+                break;
+            case 5:
+                printf("Izlaz iz programa.\n");
+                break;
+            default:
+                printf("Neispravan izbor.\n");
+                break;
+        }
+    } while(izbor!=5);
+    return 0;
+}

@@ -1,0 +1,201 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_TIMOVA 100
+#define MAX_DUZINA 30
+
+typedef struct {
+    char naziv[MAX_DUZINA];
+    char grad[MAX_DUZINA];
+    int gol_razlika;
+    int broj_bodova;
+    int broj_pobeda;
+    int broj_neresenih;
+    int broj_poraza;
+} TIM;
+
+void ucitajTimove(TIM timovi[],int *broj_timova) {
+    FILE *file=fopen("Tim.txt","r");
+    if(file==NULL) {
+        printf("Greska pri otvaranju datoteke.\n");
+        exit(1);
+    }
+    *broj_timova=0;
+    while(fscanf(file,"%s %s %d %u %u %u %u",timovi[*broj_timova].naziv,timovi[*broj_timova].grad,
+                 &timovi[*broj_timova].gol_razlika,&timovi[*broj_timova].broj_bodova,
+                 &timovi[*broj_timova].broj_pobeda,&timovi[*broj_timova].broj_neresenih,
+                 &timovi[*broj_timova].broj_poraza)!=EOF) {
+        (*broj_timova)++;
+    }
+    fclose(file);
+}
+
+void sacuvajTimove(TIM timovi[],int broj_timova) {
+    FILE *file=fopen("Tim.txt","w");
+    if(file==NULL) {
+        printf("Greska pri otvaranju datoteke.\n");
+        exit(1);
+    }
+    for(int i=0;i<broj_timova;i++) {
+        fprintf(file,"%s %s %d %u %u %u %u\n",timovi[i].naziv,timovi[i].grad,timovi[i].gol_razlika,
+                timovi[i].broj_bodova,timovi[i].broj_pobeda,timovi[i].broj_neresenih,timovi[i].broj_poraza);
+    }
+    fclose(file);
+}
+
+int pronadjiTim(TIM timovi[],int broj_timova,const char *naziv) {
+    for(int i=0;i<broj_timova;i++) {
+        if(strcmp(timovi[i].naziv,naziv)==0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void dodajTim(TIM timovi[],int *broj_timova) {
+    if(*broj_timova>=MAX_TIMOVA) {
+        printf("Ne moze se dodati vise timova.\n");
+        return;
+    }
+    TIM novi_tim;
+    printf("Unesite naziv tima: ");
+    scanf("%s",novi_tim.naziv);
+    if(pronadjiTim(timovi,*broj_timova,novi_tim.naziv)!=-1) {
+        printf("Tim sa tim nazivom vec postoji.\n");
+        return;
+    }
+    printf("Unesite grad: ");
+    scanf("%s",novi_tim.grad);
+    printf("Unesite gol razliku: ");
+    scanf("%d",&novi_tim.gol_razlika);
+    printf("Unesite broj bodova: ");
+    scanf("%d",&novi_tim.broj_bodova);
+    printf("Unesite broj pobeda: ");
+    scanf("%d",&novi_tim.broj_pobeda);
+    printf("Unesite broj neresenih utakmica: ");
+    scanf("%d",&novi_tim.broj_neresenih);
+    printf("Unesite broj poraza: ");
+    scanf("%d",&novi_tim.broj_poraza);
+
+    timovi[*broj_timova]=novi_tim;
+    (*broj_timova)++;
+    sacuvajTimove(timovi,*broj_timova);
+}
+
+int porediTimove(const void *a,const void *b) {
+    return ((TIM*)b)->broj_bodova-((TIM*)a)->broj_bodova;
+}
+
+void ispisTimovaIzGrada(TIM timovi[],int broj_timova) {
+    char grad[MAX_DUZINA];
+    printf("Unesite grad: ");
+    scanf("%s",grad);
+
+    TIM timovi_iz_grada[MAX_TIMOVA];
+    int broj_timova_iz_grada=0;
+
+    for(int i=0;i<broj_timova;i++) {
+        if(strcmp(timovi[i].grad,grad)==0) {
+            timovi_iz_grada[broj_timova_iz_grada++]=timovi[i];
+        }
+    }
+
+    qsort(timovi_iz_grada,broj_timova_iz_grada,sizeof(TIM),porediTimove);
+
+    char ime_datoteke[100];
+    sprintf(ime_datoteke,"GRAD_%s_STATISTIKA.txt",grad);
+    FILE *file=fopen(ime_datoteke,"w");
+    if(file==NULL) {
+        printf("Greska pri otvaranju datoteke.\n");
+        return;
+    }
+
+    for(int i=0;i<broj_timova_iz_grada;i++) {
+        fprintf(file,"%s %s %d %d %d %d %d\n",timovi_iz_grada[i].naziv,timovi_iz_grada[i].grad,
+                timovi_iz_grada[i].gol_razlika,timovi_iz_grada[i].broj_bodova,timovi_iz_grada[i].broj_pobeda,
+                timovi_iz_grada[i].broj_neresenih,timovi_iz_grada[i].broj_poraza);
+    }
+    fclose(file);
+
+    printf("Podaci su zapisani u datoteku %s\n",ime_datoteke);
+}
+
+void brojTimovaSaBodovimaVecimOd(TIM timovi[],int broj_timova) {
+    unsigned int broj_bodova;
+    printf("Unesite broj bodova: ");
+    scanf("%d",&broj_bodova);
+
+    int broj_timova_sa_vise_bodova=0;
+    for(int i=0;i<broj_timova;i++) {
+        if(timovi[i].broj_bodova>broj_bodova) {
+            broj_timova_sa_vise_bodova++;
+        }
+    }
+    printf("Broj timova sa vise od %u bodova: %d\n",broj_bodova,broj_timova_sa_vise_bodova);
+}
+
+void promeniBrojPobeda(TIM timovi[],int broj_timova) {
+    char naziv[MAX_DUZINA];
+    printf("Unesite naziv tima: ");
+    scanf("%s",naziv);
+
+    int indeks=pronadjiTim(timovi,broj_timova,naziv);
+    if(indeks==-1) {
+        printf("Tim sa nazivom %s nije pronadjen.\n",naziv);
+        return;
+    }
+
+    unsigned int novi_broj_pobeda;
+    printf("Unesite novi broj pobeda: ");
+    scanf("%d",&novi_broj_pobeda);
+
+    timovi[indeks].broj_pobeda=novi_broj_pobeda;
+    sacuvajTimove(timovi,broj_timova);
+    printf("broj pobeda je promenjen.\n");
+}
+
+void prikaziMeni() {
+    printf("Meni:\n");
+    printf("1. Dodavanje novog tima\n");
+    printf("2. Ispis svih timova iz zadatog grada\n");
+    printf("3. Ispis broja timova sa brojem bodova vecim od zadatog\n");
+    printf("4. Promena broja pobeda za izabran tim\n");
+    printf("5. Izlaz\n");
+}
+
+int main() {
+    TIM timovi[MAX_TIMOVA];
+    int broj_timova=0;
+
+    ucitajTimove(timovi,&broj_timova);
+
+    int izbor;
+    do {
+        prikaziMeni();
+        printf("Izaberite opciju: ");
+        scanf("%d",&izbor);
+
+        switch(izbor) {
+            case 1:
+                dodajTim(timovi,&broj_timova);
+                break;
+            case 2:
+                ispisTimovaIzGrada(timovi,broj_timova);
+                break;
+            case 3:
+                brojTimovaSaBodovimaVecimOd(timovi,broj_timova);
+                break;
+            case 4:
+                promeniBrojPobeda(timovi,broj_timova);
+                break;
+            case 5:
+                printf("Izlaz iz programa.\n");
+                break;
+            default:
+                printf("Neispravan izbor.\n");
+                break;
+        }
+    } while(izbor!=5);
+    return 0;
+}
