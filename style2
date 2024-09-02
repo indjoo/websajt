@@ -1,0 +1,12 @@
+#Naslov{
+    text-align: center;
+    font-size: 30px;
+}
+#fotoaparat{
+    display: block;
+}
+*{
+    margin: auto;
+    width: 1000px;
+    height: 60px;
+}
