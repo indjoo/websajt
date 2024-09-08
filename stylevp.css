@@ -1,0 +1,16 @@
+*
+{
+    margin:0;
+    padding: 0;
+}
+.wrapper{
+    width: 1000px;
+    margin: 0 auto;
+}
+main{
+    background-color: white;
+    padding: 15px;
+}
+body{
+    background-color: teal;
+}
