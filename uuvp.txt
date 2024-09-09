@@ -1,0 +1,22 @@
+Uvod u veb programiranje 
+
+1.Mreza koja povezuje uredjaje sirom sveta i omogucava razmenu informacija i podataka izmedju njih
+
+2.Znacajan je zbog lakse komunikacije sa drugima,lakse razmene podataka,raznog sadrzaja na internetu itd.
+
+3.Vrste veb portala: Internacionalni, regionalni, drzavni, korporativni, obrazovni, sportski, personalni, veb portali hosting kompanija
+
+4.Isplativost veb portala: reklama, redovno azuriranje, prvi utisak, preglednost I atraktivnost u sluzbi svrhe, popularnost, socijalne mreze, dodavanje aktuelnih sadrzaja
+
+5.Veb prodavnice su prodavnice zasnovane na elektronskoj trgovini.
+
+6.Vrste veb prodavnica: jedna vrsta proizvoda - vertikalne, siri asortiman proizvoda - horizontalne.
+
+7.Prednosti veb kupovine: komforna kupovina, dovoljno vremena za razmisljanje, detaljan uvid u karakteristike proizvoda, kupovina bez lutanja po prodavnicama,prodaja proizvoda bez angazovanja radnika, prodaja povezanih proizvoda
+
+8.Mane veb prodavnice: nema direktnog kontakta izmedju kupca i prodavca, nemogucnost uticaja prodavca na kupca, nepostojanje impulsivne kupovine, problemi sa dostavom, problemi sa placanjem.
+
+9.Veb server je računar koji na sebi imainstaliran serverski softver, povezan jena Internet, a zadatak mu je da isporučiWeb strane na zahtev korisnika, prekohttp protokola. Na njemu se hostuju Websajtovi.
+
+
+	
