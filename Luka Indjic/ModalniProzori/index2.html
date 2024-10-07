@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm prozor</title>
+</head>
+<body>
+    <p>Kliknite na dugme kako bi se prikazao confirm prozor u browser-u.</p>  
+    <button onclick="prikaziConfirm()">Prikaži Confirm prozor</button>
+    <script>
+        function prikaziConfirm()
+        {
+            if (confirm('Da li zelite da nastavite posetu nasem sajtu?'))
+                alert('Odgovorili ste OK');
+            else
+                alert('Odgovorili ste Cancel');
+        }
+    </script>
+</body>
+</html>
