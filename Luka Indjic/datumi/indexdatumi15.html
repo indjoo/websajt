@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitaslni casovnik</title>
+</head>
+<body onload="digitalni_sat()">
+    <form name="sat"><input name="vreme"></form>
+    <script>
+        function digitalni_sat()
+        {
+            let danas=new Date();
+            let sat=danas.getHours();
+            let minut=danas.getMinutes();
+            let sekunda=danas.getSeconds();
+            let  temp=sat;
+            temp+=((minut<10)? ":0" : ":")+minut;
+            temp+=((sekunda<10)?":0":":")+sekunda;
+            document.sat.vreme.value=temp;
+            setTimeout("Digitalni_sat()",1000);
+        }
+    </script>
+</body>
+</html>
