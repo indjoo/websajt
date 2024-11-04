@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slika kao pozadina</title>
+</head>
+<body onload="pozadina()">
+    <script>
+        let index=function(){
+            return Math.floor((Math.random()*3));
+        }
+        function pozadina()
+        {
+            let images=['s11.jpg','s12.jpg','s13.jpg'];
+            document.body.style.backgroundImage = 'url("' + images[index()] +'")';
+        }
+    </script>
+</body>
+</html>
