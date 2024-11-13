@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt prozor</title>
+</head>
+<body>
+    <p>Kliknite na dugme kako bi se prikazao prompt prozor u browser-u.</p>
+        
+    <button onclick="prikaziPrompt()">Prikaži Prompt prozor</button>
+    <script>
+        let noviOdgovor='';
+        noviOdovor= window.prompt();
+        noviOdgovor=prompt();
+        noviOdgovor=window.prompt('Da li zelite da vam saljemo nove informacije sa sajta?');
+        noviOdgovor=window.prompt('Da li zelite da vam saljemo nove informacije sa sajta?','Da');
+        
+        function prikaziPrompt()
+        {
+            let odgovor=prompt('Kolko imate godina?');
+
+            if(odgovor<18)
+        {
+            alert('Vi ste maloletna osoba!');
+        }
+        else{
+            alert('Vi ste punoletna osoba!');
+        }
+        }
+    </script>
+</body>
+</html>

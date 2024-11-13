@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rad sa datumom</title>
+</head>
+<body>
+    <button onclick="izracunaj();">Izracunaj koliko je dana ostalo do kraja polugodista</button>
+    <script>
+        function izracunaj(){
+            let danas=new Date();
+            let polugodiste=new Date();
+            polugodiste.setMonth(11);
+            polugodiste.setDate(21);
+
+            let razlika=polugodiste-danas;
+            razlika=Math.floor(razlika/(1000*24*60*60));
+            alert('Do kraja polugodista je ostalo'+razlika+'dana.');
+        }
+    </script>
+</body>
+</html>

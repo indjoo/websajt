@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rad sa datumom</title>
+</head>
+<body>
+    <script>
+        let danas= new date();
+        let kraj_god=new date();
+        kraj_god.setMonth(11);
+        kraj_god.setDate(31);
+        let razlika =kraj_god.getTime()-danas.getTime();
+        razlika=math.floor(razlika/(1000*60*60*24));
+        document.write("<p> Do kraja godine je ostalo "+ razlika+" daana!!!</p>" );
+        
+    </script>
+</body>
+</html>

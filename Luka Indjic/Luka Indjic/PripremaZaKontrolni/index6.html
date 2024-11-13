@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Slika kao pozadina</title>
+<meta charset="utf-8">
+<style>
+div {
+width:200px;
+height:200px;
+background-color:red;
+text-align: center;
+line-height: 200px;
+margin: 0 auto;
+}
+</style>
+</head>
+<body >
+<div onclick="promeniOblik()">Klikni na mene</div>
+<script>
+function promeniOblik(){
+document.getElementsByTagName('div')[0].style.borderRadius = '50%';
+}
+</script>
+</body>
+</html>
