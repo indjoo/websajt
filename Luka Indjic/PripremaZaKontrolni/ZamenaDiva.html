@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zamena diva</title>
+</head>
+<body>
+    <style>
+        .div1{
+            width:100px;
+            height:20px;
+            background-color: red;
+            color:white;
+        }
+        .div2{
+            width:100px;
+            height:20px;
+            background-color: blue;
+            color:white;
+        }
+    </style>
+    <div id="div1" class="div1">Red</div>
+    <div id="div2" class="div2">Blue</div>
+    <button onclick="ZamenaDivova();">Dugme</button>
+    <script>
+        function ZamenaDivova()
+        {
+            const div1=document.getElementById('div1');
+            div1.textContent='Blue';
+            div1.style.backgroundColor='blue';
+            div1.style.height='20px'
+            const div2=document.getElementById('div2');
+            div2.textContent='Red';
+            div2.style.backgroundColor='red';
+            div2.style.height='20px'
+        }
+    </script>
+</body>
+</html>
