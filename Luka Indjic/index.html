@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .div1
+        {
+            width:100px;
+            height:100px;
+            background-color:red;
+            text-align: center;
+            line-height: 100px;
+            margin: 0 auto;
+        }
+        .div2
+        {
+            width:100px;
+            height:100px;
+            background-color:blue;
+            text-align: center;
+            line-height: 100px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
+    <div class="div1">red</div>
+    <br>
     
-    <script src="main03.js"></script>
+    <div class="div2">blue</div>
+    <button onclick="promeni()">button</button>
+    <script>
+        function promeni()
+        {
+            const div1=docment.getElementByClassName('div1')[0];
+            const div2=docment.getElementByClassName('div2')[0];
+            div1.style.backgroundColor="Blue";
+            div2.style.backgroundColor="Red";
+        }
+    </script>
 </body>
 </html>

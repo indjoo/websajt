@@ -11,7 +11,6 @@ function nadjiPreskocen(arr)
     console.log(ocekivanaSuma-stvarnaSuma);
 }
 console.log(nadjiPreskocen([1,2,4,5,6]));
-
 // 2
 function proveriSumu(arr,testNumber)
 {
@@ -89,3 +88,96 @@ function treciNiz(arr1,arr2)
     }
     console.log(newArr);
 }
+// 7
+// 1. nacin
+
+function createNewArray(arr1, arr2)
+{
+    let newArr=[];
+    for(let i=0;i<Math.max(arr1.length,arr2.length);i++)
+    {
+        if(arr1[i]!== undefined && newArr.indexOf(arr1[i])===-1)
+        {
+            newArr.push(arr1[i]);
+        }
+        if(arr2[i]!==undefined && newArr.indexOf(arr2[i])===-1)
+        {
+            newArr.push(arr2[i]);
+        }
+    }
+}
+console.log(createNewArray([1,1,2,3,10,11,12],[4,5,6,6,7]));
+
+// 2.nacin
+ function createNewArray1(arr1,arr2)
+ {
+    let newArr=[];
+    newArr=arr1.concat(arr2);
+    newArr=[...new Set(newArr)];
+    return newArr;
+ }
+ console.log(createNewArray([1,1,2,3,10,11,12],[4,5,6,6,7]));
+
+ // 8
+
+ function createDate(delimiter)
+ {
+    let currentDate=new Date();
+    let datum=currentDate.getDate()+delimiter+(currentDate.getMonth()+1)+delimiter+currentDate.getFullYear();
+    alert(datum);
+ }
+ console.log(createDate(prompt('Unesite delimiter za format datuma','/ ili . ili -')));
+
+ // 9
+
+let nameOfMonth=function()
+{
+    let currentDate=new Date();
+    let mesec=currentDate.getMonth()+1;
+    let naziv='';
+    switch (mesec)
+    {
+        case 1:naziv='Januar';
+        break;
+        case 2:naziv='Februar';
+        break;
+        case 3:naziv='Mart';
+        break;
+        case 4:naziv='April';
+        break;
+        case 5:naziv='Maj';
+        break;
+        case 6:naziv='Jun';
+        break;
+        case 7:naziv='Jul';
+        break;
+        case 8:naziv='Avgust';
+        break;
+        case 9:naziv='Septembar';
+        break;
+        case 10:naziv='Oktobar';
+        break;
+        case 11:naziv='Novembar';
+        break;
+        default:naziv='Decembar';
+    }
+    return naziv;
+}
+console.log(nameOfMonth());
+
+// 10
+
+function isWeekend(date)
+{
+    let message='';
+    if(date.Getday()==6 || date.Getday()==0)
+    {
+        message='Vikend je';
+    }else{
+        message='Radni je dan';
+    }
+    return message;
+}
+let nekiDatum=new Date("11/20/2021");
+console.log(nekiDatum);
+console.log(isWeekend(nekiDatum));
