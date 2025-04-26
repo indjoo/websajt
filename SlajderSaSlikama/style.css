@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #FEFA97;
+}
+
+.title {
+  margin-top: 15px;
+  text-align: center;
+  color: #6385B3;
+  text-transform: uppercase;
+}
+
+.nav {
+  height: 50px;
+  margin-top: 20px;
+  background-color: #C3FFA9;
+  display: flex;
+  justify-content: center;
+}
+
+.nav a {
+  width: 262px;
+  height: 50px;
+  border-right: 1px solid #CAF3B9;
+  color: #7685B8;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav a:hover, .nav a.active {
+  background-color: #48F7E2;
+  color: #FEFA97;
+}
+
+.container {
+  width: 700px;
+  height: 400px;
+  position: relative;
+  margin: 70px auto;
+  text-align: center;
+}
+
+.side-bar-text {
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  font-size: 50px;
+  color: #48F7E2;
+  text-shadow: 2px 8px 8px #333;
+}
+
+.slider {
+  width: 800px;
+  height: 400px;
+  display: flex;
+}
+
+.slide, .info {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.fade-out {
+  opacity: 0.5;
+}
+
+.info {
+  height: 400px;
+  width: 330px;
+  background-color: #C3FFA9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+}
+
+#title {
+  color: #48F7E2;
+  font-size: 30px;
+}
+
+#year {
+  color: #868EB1;
+  font-size: 40px;
+}
+
+.indicator-wrapper {
+  width: 700px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.indicator {
+  width: 20px;
+  height: 20px;
+  background-color: #807F7F;
+  border-radius: 50%;
+  margin: 3px;
+}
+
+.indicator.active {
+  background-color: #48F7E2;
+}
+
+.page-content {
+  width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px;
+}
+
+.content {
+  height: 150px;
+  width: 200px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.content h2 {
+  color: #48F7E2;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #48F7E2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FEFA97;
+}
