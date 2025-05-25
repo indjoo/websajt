@@ -1,0 +1,44 @@
+body {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  h1 {
+    font-weight: 700;
+    color: #333;
+  }
+  
+  table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  table td, table th {
+    vertical-align: middle !important;
+  }
+  
+  input.form-control:focus {
+    border-color: #6610f2;
+    box-shadow: 0 0 0 0.2rem rgba(102, 16, 242, 0.25);
+  }
+  
+  .btn-primary {
+    background-color: #6610f2;
+    border-color: #6610f2;
+  }
+  
+  .btn-primary:hover {
+    background-color: #520dc2;
+    border-color: #520dc2;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
